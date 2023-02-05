@@ -1,0 +1,186 @@
+# Blogging Site API definition
+
+basePath: /api
+paths:
+
+  /FeedBlogsData/{Uid}:
+    get:
+      summary: Retrieve a list of all posts from users that logged in user follows in latest to oldest post order. along with some user information
+      parameters:
+        - name: Uid
+          in: query
+          type: string
+          description: user id of logged in user to find followed user's posts 
+      responses:
+        200:
+          description: Success
+          schema:
+            type: list
+        204:
+          description: no content
+
+  /ViewBlogData:
+    post:
+      summary: Create a new post
+
+      parameters:
+        - name: post
+          in: body
+          required: false
+
+      responses:
+        200:
+          description: Success
+        400:
+          description: Bad request
+
+
+  /ViewBlogData/{blog_id}:
+    get:
+      summary: Retrieve a specific post in json format by blog ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          
+      responses:
+        200:
+          description: Success
+          schema:
+            type: json
+        204:
+          description: no content
+    
+    put:
+      summary: Update a specific post details by blog ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - name: post
+          in: body
+          required: true
+
+      responses:
+        200:
+          description: Success
+          
+          schema:
+             type : json
+        204:
+          description: Not found
+        400:
+          description: Bad request
+    
+    delete:
+      summary: Delete a specific post by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string 
+      responses:
+        200:
+          description: Success
+        400:
+          description: Not found
+
+
+  /BrowseBlogsApi:
+    get:
+      summary: Retrieve random  posts from database in shuffeled order in json format along with some user information of each blogpost
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string, integer
+      responses:
+        200:
+          description: Success
+          schema:
+            type: json
+        204:
+          description: no content
+  
+  /ProfileBlogsData/{Uid}:
+    get:
+      summary: Retrieve a list of all posts from users that is logged in 
+      parameters:
+        - name: Uid
+          in: path
+          type: string
+          description: user id of logged in user
+      responses:
+        200:
+          description: Success
+          schema:
+            type: list
+        204:
+          description: no 
+  
+  /ProfileData/{Uid}:
+    get:
+      summary: Retrieve logged in user's data 
+      parameters:
+        - name: Uid
+          in: path
+          type: string
+          description: user id of logged in user
+      responses:
+        200:
+          description: Success
+          schema:
+            type: json
+        204:
+          description: no content
+    
+    put:
+      summary: Update a specific users details by blog ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: post
+          in: body
+          required: true
+
+      responses:
+        200:
+          description: Success
+
+        204:
+          description: Not found
+        400:
+          description: Bad request
+    
+    delete:
+      summary: Delete a specific post by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string 
+      responses:
+        200:
+          description: Success
+        400:
+          description: user Not found
+
+  /ProfileData:
+    post:
+      summary: Create a new user
+
+      parameters:
+        - name: post
+          in: body
+          required: false
+
+      responses:
+        200:
+          description: Success
+        400:
+          description: Bad request
+

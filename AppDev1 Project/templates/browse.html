@@ -1,0 +1,117 @@
+<title>BROWSE</title>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Discover New Posts</h3>
+
+<br>
+
+<div class="row d-lg-flex justify-content-center align-items-center h-100 ">
+    <div class="col col-lg-9 col-xl-12">
+
+        <div class="card-body p-4 text-black">
+
+          <div class="row g-2">
+
+            <!-- <div class="container">
+              <div class="row">
+                {% for blog in blog_data %}
+                <div class="col-sm-4">
+                  <div class="card">
+                    <img src="{{ blog.image_url }}" class="card-img-top" alt="{{ blog.title }}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ blog.title }}</h5>
+                      <p class="card-text">{{ blog.description }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div> -->
+
+            <!-- LAYPUT 2 -->
+            {% for blog in blog_data %}
+            {% if blog.Uid != user.Uid %}
+            <br>
+            <div class="bg-white border mt-2">
+                <div>
+                    <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
+                        <div class="d-flex flex-row align-items-center feed-text px-2">
+                          {% if blog.profile_pic_url %}
+                          <img class="rounded-circle" src="{{ blog.profile_pic_url }}" width="45">
+                          {% else %}
+                          <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png" width="45">
+                          {% endif %}
+                            <div class="d-flex flex-column flex-wrap ml-2"><span class="font-weight-bold" > <a  href="/UserProfile/{{blog.Uid}}" class="text-muted" style="margin-left: 10px;"> {{ blog.username }}</a> </span></div>
+                        </div> 
+                        <div class="feed-icon px-2"><i class="fa fa-ellipsis-v text-black-50"></i></div>
+                    </div>
+                </div>
+             </div>
+            <!-- <div>
+                <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
+                    <div class="d-flex flex-row align-items-center feed-text px-2"><img class="rounded-circle" src="{{ blog.profile_pic_url }}" width="45">
+                        <div class="d-flex flex-column flex-wrap ml-2"><span class="font-weight-bold">{{ blog.username }}</span></div>
+                    </div>
+                    <div class="feed-icon px-2"><i class="fa fa-ellipsis-v text-black-50"></i></div>
+                </div>
+            </div> -->
+
+              <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2">
+                <img src="{{ blog.image_url }}" class="align-self-center mr-3" width = "200px", height = "250" >
+                <br>
+                <p class="mb-0"><a href="/blog/{{blog.username}}/{{blog.blog_id}}" class="text-muted">View</a></p>
+              
+                <!-- <p class="mb-2"><a href="#!" class="text-muted">Save</a></p> -->
+              </div>
+              
+              <!-- <div class="col-sm- col-md-1 col-lg-8 col-xl-1">
+                    hello
+              </div> -->
+
+              <div class="col-sm-9 col-md-6 col-lg-8 col-xl-10"><h5 class="mt-0">{{ blog.title }}</h5>
+              
+              <div style="height:300px;width:1060px;border:0px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">> {{ blog.description }} </div>
+              <br>
+
+            </div>
+            
+            <br>
+            <!-- <div class="media">
+              <img src="{{ blog.image_url }}" class="align-self-center mr-3" width = "180px", height = "200" >
+              <div class="media-body">
+                <h5 class="mt-0">{{ blog.title }}</h5>
+                <p> {{ blog.description }} </p>
+              </div>
+            </div> -->
+            {% endif %}
+            {% endfor %}
+
+            <!-- <div class="col mb-2">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                alt="image 1" class="w-100 rounded-3">
+            </div>
+            <div class="col mb-2">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                alt="image 1" class="w-100 rounded-3">
+            </div> -->
+          </div>
+          <!-- <LAYOUT 3> -->
+          <!-- <div class="row g-2">
+            <div class="col">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
+                alt="image 1" class="w-100 rounded-3">
+            </div>
+            <div class="col">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
+                alt="image 1" class="w-100 rounded-3">
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

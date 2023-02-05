@@ -1,0 +1,44 @@
+<title>POST</title>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    
+  <div class="alert alert-primary" role="alert">
+        {{ messages|last }} 
+  </div>
+   
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+<div class="col-md-6 offset-md-3 mt-5">
+
+     <h2>Add a Blog/Post</h2>
+     <br>
+     <form accept-charset="UTF-8" action="/post" method="POST" enctype="multipart/form-data" >
+       <div class="form-group" >
+         <label for="title" >Enter a title for your post</label>
+         <input type="text" name="title" class="form-control" id="title" placeholder="Title" required="required" >
+       </div>
+       <br>
+      
+       <div class="form-group">
+        <label for="description">Add some description of your post</label>
+         <textarea id="description" name="description" rows="7" cols="85"></textarea>
+       </div>
+       <br>
+       <hr>
+       <div class="form-group mt-3">
+         <label class="mr-2">Upload Image:</label>
+         <input type="file" name="file">
+       </div>
+       <hr>
+       <button type="submit" class="btn btn-primary">Submit</button>
+     </form>
+ </div> 
+
+{% endblock %}

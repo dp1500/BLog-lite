@@ -1,0 +1,38 @@
+<title>FEED</title>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<section class="content-item grey" id="blog-item">
+    <div class="container">
+        <div class="row">
+            <!-- BLOG POST - START -->
+
+                  <h2>{{blog_data.title}}</h2>
+                    <ul class="blog-detail list-unstyled list-inline">
+                      <li><i class="fa fa-calendar"></i> {{blog_data.time_stamp}}</li>
+                        
+                        <li><i class="fa fa-user"></i> {{blogger_name}}</li>
+                        
+                    </ul>
+                    <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2">
+
+                        <p><img class="img-responsive pull-left" src="{{blog_data.image_url}}"  width = "200px", height = "250"></p>
+                                            
+                    </div>
+
+                    <div class="col-sm-9 col-md-6 col-lg-8 col-xl-10">
+                        <div style="height:300px;width:1060px;border:0px solid #ccc;font:16px/26px Georgia, Garamond, Serif;">> {{blog_data.description}} </div>
+                    </div>
+
+                
+                <!-- BLOG POST - END -->
+                
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+    

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Search Results</h2>
+    <ul>
+        {% if Users %}
+            {% for search in Users %}
+
+                {% if search.Uid != user.Uid %}
+                <li><a href="/UserProfile/{{search.Uid}}">{{ search.username }}</a></li>
+                {% endif %}
+            {% endfor %}
+            
+        {% else %}
+            <h3>No user Found</h3>
+        {% endif %}
+    </ul>
+{% endblock %}
